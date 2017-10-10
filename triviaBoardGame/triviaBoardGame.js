@@ -20,6 +20,7 @@ var answer3;
 var answer4;
 var difficulty;
 var diff = 'easy';
+var answered = true;
 
 var answerArray = [answer1, answer2, answer3, answer4];
 var fA = [a, b, c, d];
@@ -41,18 +42,19 @@ function setup() {
   tileType = [255, color(0, 255, 0, 1), color(0, 255, 0), color(255, 0, 0)];
   
   butn = new button(0, 32 * 12, "roll die", 20, function(){
-    
-    questionNum = ceil(random() * questions.length) - 1;
-    
-    question = createP(questions[questionNum]);
-    
-    for(var i = 0; i < 4;i++){
-      answerArray[i] = createButton(answers[questionNum][i]);
+    if(answered){
       
-      answerArray[i].mousePressed(fA[i]);
+      questionNum = ceil(random() * questions.length) - 1;
+      
+      question = createP(questions[questionNum]);
+      
+      for(var i = 0; i < 4;i++){
+        answerArray[i] = createButton(answers[questionNum][i]);
+        
+        answerArray[i].mousePressed(fA[i]);
+      }
+      answered = false;
     }
-    
-    
   });
   
   for(var i = 0; i < levelsData.length;i++){
@@ -63,10 +65,14 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(255);
   
   if(moveNum !== 0){
     level.player.move();
+  }
+  
+  if(botMoveNum !== 0){
+    level.bot.move();
   }
   
   image(bk, 0, 0);
@@ -75,6 +81,20 @@ function draw() {
   
   butn.tick();
   butn.show();
+  
+  fill(0, 255, 0);
+  rect(20 * 4 + 25, 32 * 12 + 5, 16, 16);
+  
+  fill(255, 0, 0);
+  rect(20 * 4 + 25, 32 * 12 + 10 + 16, 16, 16);
+  
+  fill(0, 0, 255);
+  rect(20 * 4 + 25, 32 * 12 + 15 + 32, 16, 16);
+  
+  fill(0);
+  text("= again", 32 * 4, 32 * 12 + 16);
+  text("= back 2", 32 * 4, 32 * 12 + 5 + 32);
+  text("= normal", 32 * 4, 32 * 12 + 10 + 32 + 16);
   
 }
 
@@ -85,66 +105,84 @@ function mousePressed(){
 function a(){
   if(correctAnswer[questionNum] === 0){
     for(var i = 0; i < round(random() * 50);i++){
-      moveNum = floor(random() * 6 + 1);
+      moveNum = floor(random() * 7 + 1);
     }
+  }else{
+    botMoveNum = floor(random() * 9) + 1;
   }
   for(var i = 0; i < 4;i++){
       answerArray[i].remove();
   }
   question.remove();
+  
+  answered = true;
 }
 
 function b(){
   if(correctAnswer[questionNum] === 1){
     for(var i = 0; i < round(random() * 50);i++){
-      moveNum = floor(random() * 6 + 1);
+      moveNum = floor(random() * 7 + 1);
     }
+  }else{
+    botMoveNum = floor(random() * 9) + 1;
   }
   for(var i = 0; i < 4;i++){
       answerArray[i].remove();
   }
   question.remove();
+  
+  answered = true;
 }
 
 function c(){
   if(correctAnswer[questionNum] === 2){
     for(var i = 0; i < round(random() * 50);i++){
-      moveNum = floor(random() * 6 + 1);
+      moveNum = floor(random() * 7 + 1);
     }
+  }else{
+    botMoveNum = floor(random() * 9) + 1;
   }
   for(var i = 0; i < 4;i++){
       answerArray[i].remove();
   }
   question.remove();
+  
+  answered = true;
 }
 
 function d(){
   if(correctAnswer[questionNum] === 3){
     for(var i = 0; i < round(random() * 50);i++){
-      moveNum = floor(random() * 6 + 1);
+      moveNum = floor(random() * 7 + 1);
     }
+  }else{
+    botMoveNum = floor(random() * 9) + 1;
   }
   for(var i = 0; i < 4;i++){
       answerArray[i].remove();
   }
   question.remove();
+  
+  answered = true;
 }
 
 function difficultyChange(){
-  if(diff = 'easy'){
-    diff = 'medium'
-    difficulty.remove();
-    difficulty = createButton('change to hard');
-    difficulty.mousePressed(difficultyChange);
-  }else if(diff = 'medium'){
-    diff = 'hard'
-    difficulty.remove();
-    difficulty = createButton('change to easy');
-    difficulty.mousePressed(difficultyChange);
-  }else{
-    diff = 'easy'
-    difficulty.remove();
-    difficulty = createButton('change to medium');
-    difficulty.mousePressed(difficultyChange);
-  }
+  diff = 'medium'
+  difficulty.remove();
+  difficulty = createButton('change to hard');
+  difficulty.mousePressed(difficultyChangeA);
+}
+
+function difficultyChangeA(){
+  diff = 'hard'
+  difficulty.remove();
+  difficulty = createButton('change to easy');
+  difficulty.mousePressed(difficultyChangeB);
+}
+
+function difficultyChangeB(){
+  diff = 'easy'
+  difficulty.remove();
+  difficulty = createButton('change to medium');
+  difficulty.mousePressed(difficultyChange);
 }
