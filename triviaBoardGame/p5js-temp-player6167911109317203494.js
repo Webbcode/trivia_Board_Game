@@ -50,11 +50,11 @@ function player(x, y){
           
           if(moveNum === 0){
             if(diff === 'easy'){
-              moveNum = floor(random() * 5) + 1;
+              botMoveNum = floor(random() * 5) + 1;
             }else if(diff === 'medium'){
-              moveNum = floor(random() * 7) + 1;
+              botMoveNum = floor(random() * 7) + 1;
             }else{
-              moveNum = floor(random() * 9) + 1;
+              botMoveNum = floor(random() * 9) + 1;
             }
             
             if(pos === posPos.length - 1){
