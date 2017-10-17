@@ -99,7 +99,7 @@ var addQ = function(){
   nextQ();
 }
 var removeQ = function(){
-  if(qAmt > 1)
+  if(qAmt > 1){
   questions.splice(qNum, 1);
   answers.splice(qNum, 1);
   correctAnswer.splice(qNum, 1);
