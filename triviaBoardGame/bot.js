@@ -14,11 +14,11 @@ function bot(x, y){
     
     if(botPos === posPos.length - 1){
       win = -1;
-      botMoveNum = 0;
+      moveNum = 0;
       return;
     }
     
-    mN = abs(botMoveNum) / botMoveNum;
+    mN = abs(moveNum) / moveNum;
     if(dist(this.x, this.y, posPos[botPos + mN][0] * tileWidth, posPos[botPos + mN][1] * tileWidth) >= 3){
       if(this.x < posPos[botPos + mN][0] * tileWidth){
           this.x += 2;
@@ -34,21 +34,22 @@ function bot(x, y){
       if(dist(this.x, this.y, posPos[botPos + mN][0] * tileWidth, posPos[botPos + mN][1] * tileWidth) <= 3){
         this.x = posPos[botPos + mN][0] * tileWidth;
         this.y = posPos[botPos + mN][1] * tileWidth;
-        botMoveNum -= mN;
+        moveNum -= mN;
         botPos += mN;
         
         
         
-        if(botMoveNum === 0){
+        if(moveNum === 0){
           if(level.tiles[this.x / tileWidth + this.y / tileWidth * 12].subtype === 1){
-            botMoveNum = -2;
+            moveNum = -2;
           }else if(level.tiles[this.x / tileWidth + this.y / tileWidth * 12].subtype === 0){
-            botMoveNum = floor(random() * 5) + 1;
+            moveNum = floor(random() * 5) + 1;
+          }else{
+            moveType = -1;
           }
           
           if(botPos === posPos.length - 1){
             win = -1;
-            botMoveNum = 0;
             return;
           }
         }

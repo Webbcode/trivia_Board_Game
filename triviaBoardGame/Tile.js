@@ -19,8 +19,12 @@ function tile(x, y, id, subtype, variant){
     if(this.player !== null){
       this.player.x = this.x * this.w;
       this.player.y = this.y * this.w;
+      pos = 0;
       this.bot.x = this.x * this.w;
       this.bot.y = this.y * this.w;
+      botPos = 0;
+      
+      moveType = -1;
     }
   }
   

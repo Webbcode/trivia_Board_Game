@@ -46,19 +46,30 @@ function player(x, y){
             moveNum = -2;
           }else if(level.tiles[this.x / tileWidth + this.y / tileWidth * 12].subtype === 0){
             moveNum = floor(random() * 5) + 1;
-          }
-          
-          if(moveNum === 0){
+          }else{
+            moveType = 1;
             if(diff === 'easy'){
-              botMoveNum = floor(random() * 5) + 1;
+              if(random(100) < 40){
+                moveNum = floor(random() * 4) + 1;
+              }else{
+                moveType = -1;
+              }
             }else if(diff === 'medium'){
-              botMoveNum = floor(random() * 7) + 1;
+              if(random(100) < 60){
+                moveNum = floor(random() * 5) + 1;
+              }else{
+                moveType = -1;
+              }
             }else{
-              botMoveNum = floor(random() * 9) + 1;
+              if(random(100) < 80){
+                moveNum = floor(random() * 6) + 1;
+              }else{
+                moveType = -1;
+              }
             }
             
             if(pos === posPos.length - 1){
-              win = 1;
+              win = -1;
               moveNum = 0;
               return;
             }
