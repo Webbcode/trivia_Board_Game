@@ -7,7 +7,7 @@ function player(x, y){
   this.y = y;
   
   this.show = function(){
-    fill(0, 100, 200);
+    fill(255);
     
     rect(this.x + (tileWidth - this.w) / 4, this.y + (tileWidth - this.h) / 4, this.w, this.h);
   }
