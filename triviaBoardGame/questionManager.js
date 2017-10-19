@@ -99,18 +99,20 @@ var addQ = function(){
   nextQ();
 }
 var removeQ = function(){
-  questions.splice(qNum, 1);
-  answers.splice(qNum, 1);
-  correctAnswer.splice(qNum, 1);
-  
-  qs.splice(qNum, 1);
-  ans.splice(qNum, 1);
-  
-  qNum--;
-  
-  qAmt--;
-  
-  nextQ();
+  if(qAmt > 1){
+    questions.splice(qNum, 1);
+    answers.splice(qNum, 1);
+    correctAnswer.splice(qNum, 1);
+    
+    qs.splice(qNum, 1);
+    ans.splice(qNum, 1);
+    
+    qNum--;
+    
+    qAmt--;
+    
+    nextQ();
+  }
 }
 
 var nextQ = function(){
@@ -125,7 +127,7 @@ var nextQ = function(){
   
   pN = createP(qNum + "/" + (qAmt - 1)).position((4 + 2) * 57 - 1, 10);
   
-   qV = createInput( qs[qNum]);
+  qV = createInput( qs[qNum]);
   qV.position((4 + 2) * 30,0);
 
   prev = createButton('previous question');
