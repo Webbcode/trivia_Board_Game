@@ -11,7 +11,7 @@ var posPos = [];
 var questions = ["Points that do not lie on the same line are", "points that lie on the same plane are", "points not in the same plane are", "Something that cuts an object into two equal parts are", "A part of a line with two endpoints are", "A figure formed by two rays with a common endpoint is", "Basic unit of matter.", "The center of an atom which contains protons and neutrons.", "Substance consisting entirely of one type of atom.", "Substance formed by the chemical combination of two or more elements in definite proportions.", "Bond formed when one or more electrons are transferred from one atom to another.", "Bond formed by sharing electrons.", "Measurement system used to indicate the concentration of hydrogen ions in solution. Ranges from 0-14."];
 var answers = [["noncolplanar", "noncollinear", "line", "planar"], ["coplanar", "noncollinear", "line", "none of these"], ["noncoplanar", "collinear", "line", "none of these"], ["perpendicular", "line", "bisector", "none of these"], ["line segment", "vector", "ray", "angle"], ["none of these", "ray", "line segment", "angle"], ["Compound", "Element", "Atom", "Ion"], ["Neucleus", "Center", "Atom", "N"], ["Element", "Atom", "Ion", "Compound"], ["Compound", "Ionic bond", "Ion", "Element"], ["Covalent bond", "Ionic bond", "Ion", "Element"], ["Covalent bond", "Ionic bond", "Ion", "Element"], ["Acid", "Base", "pH Scale", "Compound"]];
 var questionNum = 0;
-var correctAnswer = [1, 0, 0, 2, 1, 3, 2, 0, 0, 0, 1, 0, 2];
+var correctAnswer = [1, 0, 0, 2, 0, 3, 2, 0, 0, 0, 1, 0, 2];
 var question;
 var answer1;
 var answer2;
