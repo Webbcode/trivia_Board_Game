@@ -91,10 +91,15 @@ var eS = new state(function(){
 });
 
 var mS = new state(function(){
-  textSize(13);
   if(height !== 12 * 32){
     resizeCanvas(12 * 32, 12 * 32);
   }
+  
+  textSize(40);
+  text("Quiz Board", width / 2 - 200, 50);
+  
+  textSize(13);
+  
   background(51);
   gB.tick();
   gB.show();
